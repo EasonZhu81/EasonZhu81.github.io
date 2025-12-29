@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="stylesheet" href="CSS/DarkloniaDemise.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Eason Zhu</a></li>
+                <li><a href="https://www.linkedin.com/in/eason-zhu-459611337/" target="_blank">LinkedIn</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="my-projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div id="centered-box">
+            <h1>Darklonia's Demise</h1>
+            <video controls autoplay src="teaser.mp4" width="640" height="480">
+                This browser does not support HTML5 video
+            </video>
+            <a href="https://youtu.be/ExnXSTaLGdE" target="_blank">Video Link</a>
+        </div>
+    </header>
+
+    <section>
+        <h3>Role: Programmer & Game Designer</h3>
+        <p>Coded all the scripts in C# and designed all the level layouts and GUI</p>
+        <h3>WIP</h3>
+    </section>
+
+    <section>
+        <h3>Play It!</h3>
+        <div id="unity-container" class="unity-desktop" style="margin: 0 auto;">
+            <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning"> </div>
+            <div id="unity-footer">
+                <div id="unity-webgl-logo"></div>
+                <div id="unity-fullscreen-button"></div>
+                <div id="unity-build-title">Darklonia's Demise</div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var container = document.querySelector("#unity-container");
+        var canvas = document.querySelector("#unity-canvas");
+        var loadingBar = document.querySelector("#unity-loading-bar");
+        var progressBarFull = document.querySelector("#unity-progress-bar-full");
+        var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+        var warningBanner = document.querySelector("#unity-warning");
+
+        function unityShowBanner(msg, type) {
+            function updateBannerVisibility() {
+                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+            }
+            var div = document.createElement('div');
+            div.innerHTML = msg;
+            warningBanner.appendChild(div);
+            if (type == 'error') div.style = 'background: red; padding: 10px;';
+            else {
+                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                setTimeout(function () {
+                    warningBanner.removeChild(div);
+                    updateBannerVisibility();
+                }, 5000);
+            }
+            updateBannerVisibility();
+        }
+
+        // Ensure these file names exactly match what is in your Build folder
+        var buildUrl = "Build";
+        var loaderUrl = buildUrl + "/Darklonia's Demise (WebGL).loader.js";
+        var config = {
+            dataUrl: buildUrl + "/Darklonia's Demise (WebGL).data.br",
+            frameworkUrl: buildUrl + "/Darklonia's Demise (WebGL).framework.js.br",
+            codeUrl: buildUrl + "/Darklonia's Demise (WebGL).wasm.br",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "VIE Studios",
+            productName: "Darklonia's Demise",
+            productVersion: "1.0",
+            showBanner: unityShowBanner,
+        };
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            var meta = document.createElement('meta');
+            meta.name = 'viewport';
+            meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+            document.getElementsByTagName('head')[0].appendChild(meta);
+            container.className = "unity-mobile";
+            canvas.className = "unity-mobile";
+        } else {
+            canvas.style.width = "960px";
+            canvas.style.height = "600px";
+        }
+
+        loadingBar.style.display = "block";
+
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => {
+                    unityInstance.SetFullscreen(1);
+                };
+            }).catch((message) => {
+                alert(message);
+            });
+        };
+        document.body.appendChild(script);
+    </script>
+
+</body>
+
+</html>
