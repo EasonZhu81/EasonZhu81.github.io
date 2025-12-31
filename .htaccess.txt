@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+</IfModule>
+
+<IfModule mod_mime.c>
+  # Unity Brotli Compression Fix
+  RemoveType .br
+  RemoveType .unityweb
+  AddEncoding br .br
+  AddEncoding br .unityweb
+</IfModule>
