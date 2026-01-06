@@ -1,0 +1,37 @@
+#centered-box video {
+    border-radius: 1em;
+}
+
+#centered-box a {
+    text-decoration: underline;
+}
+
+#unity-container {
+    position: relative;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    margin: 20px auto !important;
+    display: block !important;
+    width: 960px;
+    max-width: 95%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #111;
+    overflow: hidden;
+}
+
+#unity-canvas {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+#unity-footer {
+    position: relative !important;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #222;
+}

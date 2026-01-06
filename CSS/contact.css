@@ -1,0 +1,26 @@
+.text-container ul{
+    list-style-type: none;
+}
+
+.text-container {
+    text-align: left;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.flex-container img {
+    float:right;
+    border-radius: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    border-radius: 1em;
+    object-fit: cover;
+    object-position: bottom;
+}

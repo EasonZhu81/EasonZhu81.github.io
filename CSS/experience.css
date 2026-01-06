@@ -1,0 +1,43 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.flex-container ul {
+    text-align: center;
+    list-style-type: none;
+    gap: 2em;
+}
+
+.flex-container ul a {
+    text-decoration: none;
+    /* removes underline by default for links */
+    color: var(--text-color);
+    transition: 0.5s;
+}
+
+.flex-container ul a:hover {
+    /* when hovering ontop of link, underline link*/
+    color: rgb(0, 88, 183);
+}
+
+#Turing {
+    background-color: var(--color-3);
+    justify-content: center;
+}
+
+#Turing img {
+    float: right;
+    border-radius: 1em;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    max-width: 450px;
+}
+
+#Turing p {
+    margin-top: 5px;
+}
