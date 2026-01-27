@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/contact.css">
 </head>
@@ -13,10 +13,21 @@
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Eason Zhu</a></li>
+                <li id="first"><a href="index.html">Eason Zhu</a></li>
                 <li><a href="https://www.linkedin.com/in/eason-zhu-459611337/" target="_blank">LinkedIn</a></li>
                 <li><a href="experience.html">Experience</a></li>
-                <li><a href="my-projects.html">Projects</a></li>
+
+                <li class="dropdown">
+                    <a href="my-projects.html" id="projects">Projects</a>
+                    <ul class="dropdown-content">
+                        <li><a href="DarkloniaDemise.html">Darklonia's Demise</a></li>
+                        <li><a href="UnderwaterMaze.html">Underwater Maze</a></li>
+                        <li><a href="FPGA.html">FPGA Aim Trainer</a></li>
+                        <li><a href="PersonalWebsite.html">Personal Website</a></li>
+                        <li><a href="DeepLearning.html">Deep Learning AI</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>

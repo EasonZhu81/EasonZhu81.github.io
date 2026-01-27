@@ -1,21 +1,13 @@
-/* importing fonts */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    /* Deep charcoal black, pulled from the darkest shadow of the suit jacket */
     --base-color: #121214;
-    /* Pure white for maximum contrast against the dark base */
     --text-color: #ffffff;
-    /* A deep, rich navy blue from the shadowed folds of the tie */
     --primary-color: #132447;
-    /* Dark graphite grey from the leather chair, useful for secondary background elements like cards */
     --secondary-color: #242528;
-    /* A dark, cool slate grey from the darker patches of the grunge wall background */
     --color-1: #3a3d42;
-    /* A very deep, muted bronze tone, derived from the darkest shadow areas of the skin */
     --color-2: #252c3b;
-    /* Midnight blue/black from the deepest recesses between the tie and shirt collar */
     --color-3: #233445;
 }
 
@@ -49,7 +41,6 @@ nav {
     /* nav bar*/
     margin: 1em auto 3em;
     width: min(1000px, 100%);
-    /*Nav bar can grow up to 1000px but never exceed screen size*/
 }
 
 nav ul {
@@ -60,9 +51,17 @@ nav ul {
     list-style-type: none;
     /* removes bullets */
     gap: 2em;
+    padding: 0;
 }
 
-nav li:first-child {
+nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#first {
     margin-right: auto;
     font-family: Merriweather, Poppins;
     font-weight: bold;
@@ -71,13 +70,50 @@ nav li:first-child {
 
 nav a {
     text-decoration: none;
-    /* removes underline by default for links */
     color: var(--text-color);
     transition: .5s;
 }
 
 nav a:hover {
-    /* when hovering ontop of link, underline link*/
+    color: rgb(0, 88, 183);
+}
+
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown:hover>a {
+    color: rgb(0, 88, 183);
+    background-color: var(--base-color);
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    z-index: 1000;
+    background-color: var(--base-color);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    gap: 0;
+    align-items: stretch;
+    padding: 5px 0;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-content li a:hover {
     color: rgb(0, 88, 183);
 }
 
@@ -88,6 +124,16 @@ section {
     background: var(--color-1);
     padding: min(2em, 15%);
     border-radius: 1em;
+}
+
+#projects {
+    transition: 0.5s;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+#projects:hover {
+    background-color: var(--base-color);
 }
 
 .flex-container {
